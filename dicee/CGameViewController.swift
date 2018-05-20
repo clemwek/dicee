@@ -20,9 +20,9 @@ class CGameViewController: UIViewController {
 
     @IBAction func startGame(_ sender: UIButton) {
         if sender.tag == 2 {
-            opponent = true
-        } else {
             opponent = false
+        } else {
+            opponent = true
         }
         
         self.performSegue(withIdentifier: "startGameSegue", sender: nil)
