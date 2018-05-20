@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="kzN-V9-aR8">
             <objects>
-                <viewController id="yzh-Fj-IxZ" sceneMemberID="viewController">
+                <viewController id="yzh-Fj-IxZ" customClass="CGameViewController" customModule="dicee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l6U-vt-6oL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +145,7 @@
                                 <rect key="frame" x="67" y="82" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-EO-FZr">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-EO-FZr">
                                 <rect key="frame" x="16" y="319" width="150" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.75686274509803919" green="0.054901960784313725" blue="0.054901960784313725" alpha="0.74661641725352113" colorSpace="calibratedRGB"/>
@@ -153,8 +153,11 @@
                                 <state key="normal" title="single player">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startGame:" destination="yzh-Fj-IxZ" eventType="touchUpInside" id="HCD-c2-frV"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jhf-Xo-WF1">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jhf-Xo-WF1">
                                 <rect key="frame" x="209" y="319" width="150" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.75686274509999996" green="0.054901960780000002" blue="0.054901960780000002" alpha="0.74661641729999995" colorSpace="calibratedRGB"/>
@@ -162,6 +165,9 @@
                                 <state key="normal" title="2 player">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startGame:" destination="yzh-Fj-IxZ" eventType="touchUpInside" id="d33-Pu-8aP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-pq-eYu">
                                 <rect key="frame" x="112" y="465" width="150" height="67"/>
@@ -181,7 +187,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="kaZ-Vu-O4n"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Dap-Lx-kd9"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="startGameSegue" id="Dap-Lx-kd9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4t-do-QKM" userLabel="First Responder" sceneMemberID="firstResponder"/>

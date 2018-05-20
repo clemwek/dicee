@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B356D6F020B1DC6300795F4B /* CGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B356D6EF20B1DC6300795F4B /* CGameViewController.swift */; };
 		B385612F20AF3572004C0730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B385612E20AF3572004C0730 /* AppDelegate.swift */; };
 		B385613120AF3572004C0730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B385613020AF3572004C0730 /* ViewController.swift */; };
 		B385613420AF3572004C0730 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B385613220AF3572004C0730 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B356D6EF20B1DC6300795F4B /* CGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGameViewController.swift; sourceTree = "<group>"; };
 		B385612B20AF3572004C0730 /* dicee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dicee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B385612E20AF3572004C0730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B385613020AF3572004C0730 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				B385612E20AF3572004C0730 /* AppDelegate.swift */,
+				B356D6EF20B1DC6300795F4B /* CGameViewController.swift */,
 				B385613020AF3572004C0730 /* ViewController.swift */,
 				B385613220AF3572004C0730 /* Main.storyboard */,
 				B385613820AF3576004C0730 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B356D6F020B1DC6300795F4B /* CGameViewController.swift in Sources */,
 				B385613720AF3572004C0730 /* dicee.xcdatamodeld in Sources */,
 				B385613120AF3572004C0730 /* ViewController.swift in Sources */,
 				B385612F20AF3572004C0730 /* AppDelegate.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let diceArray = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    var opponent: Bool = true
     
     var randomDiceIndex1 = 0
     var randomDiceIndex2 = 0
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(opponent)
         updateDiceImages()
     }
 
