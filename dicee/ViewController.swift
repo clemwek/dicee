@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     var activePlayer: String = "player1"
     
     var tempTotal: Int = 0
+    var tempRoundCount: Int = 0
     
     
     @IBOutlet weak var diceImageView1: UIImageView!
@@ -80,6 +81,7 @@ class ViewController: UIViewController {
             tempTotal = 0
             updateShiftPlayer()
         }
+        tempRoundCount += 1
         updateLabels()
     }
     
@@ -100,10 +102,13 @@ class ViewController: UIViewController {
         // add score to total
         if activePlayer == players[0] {
             player1Score += tempTotal
+            player1Rounds += tempRoundCount
         } else {
             player2Score += tempTotal
+            player2Rounds += tempRoundCount
         }
         tempTotal = 0
+        tempRoundCount = 0
         updateLabels()
         // change player
         if activePlayer == players[0] {
