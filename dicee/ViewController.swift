@@ -88,7 +88,6 @@ class ViewController: UIViewController {
     }
     
     func updateLabels() {
-        
         player1ScoreLabel.text = "\(player1Score)"
         player2ScoreLabel.text = "\(player2Score)"
         player1RoundsCount.text = "\(player1Rounds)"
@@ -113,6 +112,11 @@ class ViewController: UIViewController {
         } else {
             activePlayer = players[0]
             activePlayerLabel.text = activePlayer
+        }
+        // if comp play
+        if activePlayer == "Comp" {
+            updateDiceImages()
+            updateShiftPlayer()
         }
     }
 
