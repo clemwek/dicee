@@ -10,9 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let diceArray = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
-    var players = ["player1", "player2"]
-    var opponent: Bool = true
+    public var opponent: Bool = true
     
     @IBOutlet weak var activePlayerLabel: UILabel!
     @IBOutlet weak var player1Lable: UILabel!
@@ -25,21 +23,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var roundTotalLabel: UILabel!
     @IBOutlet weak var roundTotal: UILabel!
     
-    var randomDiceIndex1 = 0
-    var randomDiceIndex2 = 0
-    var player1Score: Int = 0
-    var player2Score: Int = 0
-    var player1Rounds: Int = 0
-    var player2Rounds: Int = 0
-    var activePlayer: String = "player1"
-    
-    var tempTotal: Int = 0
-    var tempRoundCount: Int = 0
-    
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
-    override func viewDidLoad() {
+    private let diceArray = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    private var players = ["player1", "player2"]
+    
+    
+    private var randomDiceIndex1 = 0
+    private var randomDiceIndex2 = 0
+    private var player1Score: Int = 0
+    private var player2Score: Int = 0
+    private var player1Rounds: Int = 0
+    private var player2Rounds: Int = 0
+    private var activePlayer: String = "player1"
+    
+    private var tempTotal: Int = 0
+    private var tempRoundCount: Int = 0
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         if opponent {
@@ -48,13 +50,55 @@ class ViewController: UIViewController {
         }
         updateLabels()
     }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        updateDiceImages()
+    }
 
-    @IBAction func rollButtonPressed(_ sender: Any) {
+     @IBAction func rollButtonPressed(_ sender: Any) {
         updateDiceImages()
     }
     
     @IBAction func shiftPlayer(_ sender: UIButton) {
         updateShiftPlayer()
+    }
+    
+    func checkWinner() {
+        if player1Score >= 100 || player2Score >= 100 {
+            var player = ""
+            if player1Score > 100 {
+                player = "Player 1"
+            } else if player2Score > 100 {
+                player = "Player 2"
+            }
+            let winnerAlert = UIAlertController(title: "Congratulation", message: "\(player) wins the game", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                self.restartGame()
+            }
+            winnerAlert.addAction(restartAction)
+            present(winnerAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func compPlay() {
+        if activePlayer == "Comp" {
+            updateDiceImages()
+            updateShiftPlayer()
+        }
+    }
+    
+    func restartGame() {
+        randomDiceIndex1 = 0
+        randomDiceIndex2 = 0
+        player1Score = 0
+        player2Score = 0
+        player1Rounds = 0
+        player2Rounds = 0
+        activePlayer = "player1"
+        
+        tempTotal = 0
+        tempRoundCount = 0
+        updateLabels()
     }
     
     func updateDiceImages() {
@@ -80,10 +124,6 @@ class ViewController: UIViewController {
         }
         tempRoundCount += 1
         updateLabels()
-    }
-    
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        updateDiceImages()
     }
     
     func updateLabels() {
@@ -118,44 +158,6 @@ class ViewController: UIViewController {
         }
         // if comp play
         compPlay()
-    }
-    
-    func checkWinner() {
-        if player1Score > 100 || player2Score > 100 {
-            var player = ""
-            if player1Score > 100 {
-                player = "Player 1"
-            } else if player2Score > 100 {
-                player = "Player 2"
-            }
-            let winnerAlert = UIAlertController(title: "Congratulation", message: "\(player) wins the game", preferredStyle: .alert)
-            let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
-                self.restartGame()
-            }
-            winnerAlert.addAction(restartAction)
-            present(winnerAlert, animated: true, completion: nil)
-        }
-    }
-    
-    func restartGame() {
-        randomDiceIndex1 = 0
-        randomDiceIndex2 = 0
-        player1Score = 0
-        player2Score = 0
-        player1Rounds = 0
-        player2Rounds = 0
-        activePlayer = "player1"
-        
-        tempTotal = 0
-        tempRoundCount = 0
-        updateLabels()
-    }
-    
-    func compPlay() {
-        if activePlayer == "Comp" {
-            updateDiceImages()
-            updateShiftPlayer()
-        }
     }
 
 }

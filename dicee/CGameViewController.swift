@@ -10,12 +10,18 @@ import UIKit
 
 class CGameViewController: UIViewController {
     
-    var opponent: Bool = false
+    private var opponent: Bool = false
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ViewController {
+            vc.opponent = opponent
+        }
     }
 
     @IBAction func startGame(_ sender: UIButton) {
@@ -26,12 +32,6 @@ class CGameViewController: UIViewController {
         }
         
         self.performSegue(withIdentifier: "startGameSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ViewController {
-            vc.opponent = opponent
-        }
     }
     
 }
