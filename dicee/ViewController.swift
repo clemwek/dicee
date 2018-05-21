@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     var players = ["player1", "player2"]
     var opponent: Bool = true
     
-    
     @IBOutlet weak var activePlayerLabel: UILabel!
     @IBOutlet weak var player1Lable: UILabel!
     @IBOutlet weak var player1ScoreLabel: UILabel!
@@ -22,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var player2Label: UILabel!
     @IBOutlet weak var player2ScoreLabel: UILabel!
     @IBOutlet weak var player2RoundsCount: UILabel!
-    
     
     @IBOutlet weak var roundTotalLabel: UILabel!
     @IBOutlet weak var roundTotal: UILabel!
@@ -37,7 +35,6 @@ class ViewController: UIViewController {
     
     var tempTotal: Int = 0
     var tempRoundCount: Int = 0
-    
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
@@ -110,6 +107,7 @@ class ViewController: UIViewController {
         tempTotal = 0
         tempRoundCount = 0
         updateLabels()
+        checkWinner()
         // change player
         if activePlayer == players[0] {
             activePlayer = players[1]
@@ -119,6 +117,41 @@ class ViewController: UIViewController {
             activePlayerLabel.text = activePlayer
         }
         // if comp play
+        compPlay()
+    }
+    
+    func checkWinner() {
+        if player1Score > 100 || player2Score > 100 {
+            var player = ""
+            if player1Score > 100 {
+                player = "Player 1"
+            } else if player2Score > 100 {
+                player = "Player 2"
+            }
+            let winnerAlert = UIAlertController(title: "Congratulation", message: "\(player) wins the game", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
+                self.restartGame()
+            }
+            winnerAlert.addAction(restartAction)
+            present(winnerAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func restartGame() {
+        randomDiceIndex1 = 0
+        randomDiceIndex2 = 0
+        player1Score = 0
+        player2Score = 0
+        player1Rounds = 0
+        player2Rounds = 0
+        activePlayer = "player1"
+        
+        tempTotal = 0
+        tempRoundCount = 0
+        updateLabels()
+    }
+    
+    func compPlay() {
         if activePlayer == "Comp" {
             updateDiceImages()
             updateShiftPlayer()
